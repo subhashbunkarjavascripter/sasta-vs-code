@@ -1,0 +1,128 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../stylesheets/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+ </head>
+ <body>
+  <div id="main">
+
+    <div id="nav">
+      <div id="logo">
+        <img src="https://imgs.search.brave.com/6047vQ4hJAuOrjiBbBA4HEc4OyJ0-hXbJYvc-Jk29us/rs:fit:777:774:1/g:ce/aHR0cHM6Ly9tb2Jp/bGVtYW5jZXJibG9n/LmJsb2IuY29yZS53/aW5kb3dzLm5ldC9i/bG9nLzIwMjAvMDgv/dnMtY29kZS1sb2dv/LXRyYW5zcC5wbmc" alt="">
+      </div>
+      <div id="a">File</div>
+      <div id="a">Edit</div>
+      <div id="a">Selection</div>
+      <div id="a">View</div>
+      <div id="a">Go</div>
+      <div id="a">Run</div>
+      <div id="a">Terminal</div>
+      <div id="a">Help</div>
+
+    </div>
+    <div id="border">
+      <i class="ri-file-copy-2-fill"></i>
+      <i class="ri-file-copy-2-fill"></i>
+      <i class="ri-search-line"></i>
+      <i class="ri-git-branch-line"></i>
+      <i class="ri-play-circle-fill"></i>
+      <i class="ri-function-fill"></i>
+    </div>
+
+    <div id="left">
+      <h4>sasta vs code</h4>
+       <div id="file">
+        <h2>Folder name</h2>
+        <div id="con">
+        <i id="fileicon" class="ri-file-3-line"></i>
+        <i id="foldericon" class="ri-folder-3-fill"></i>
+        <i id="restarticon" class="ri-restart-line"></i>
+        </div>
+       </div>
+       <form action="./createfile">
+         <div id="fileform" class="file">
+          <input type="text" placeholder="filename" name="filename">
+         </div>
+       </form>
+       <form action="./createfolder">
+         <div id="folderform" class="folder">
+          <input type="text" placeholder="foldername" name="foldername">
+         </div>
+       </form>
+
+       <% filesdup.forEach(function(files){ %>
+         <% if( files.folderHai===true ){ %>
+          <div class="files">
+            <div id="u">
+             <a href="/<%=files.name%>"><i class="ri-folder-2-line"></i><%= files.name %></div></a>
+             <div id="i">
+            <i class="ri-edit-2-fill"></i>
+            <a href="/delete<%=files.name%>"><i class="ri-delete-bin-line"></i></a>
+             </div>
+           </div>
+         <%} else{%>
+          <div class="files">
+            <div id="u">
+             <a href="/fileopened/<%=files.name %>"><i class="ri-file-2-line"></i><%= files.name %></div></a>
+             <div id="i">
+            <i class="ri-edit-2-fill"></i>
+           <a href="/delete/<%=files.name%>"><i class="ri-delete-bin-line"></i></a>
+             </div>
+           </div>
+         <% } %>
+       <% }) %>
+    </div>
+    <div id="right">
+      <!-- <div id="rnav">
+        <div id="opened"> index.html <i class="ri-close-line"></i> </div>
+      </div> -->
+    </div>
+
+  </div>
+   
+
+
+
+
+
+  <script>
+    function chaluband(){
+      document.querySelectorAll(".file").forEach(function(e){
+        e.style.display="none";
+     })
+     document.querySelectorAll(".folder").forEach(function(e){
+      e.style.display="none";
+   })
+    }
+ 
+     document.querySelector("#fileicon").addEventListener("click",function(){
+      chaluband();
+      document.querySelector("#fileform").style.display="initial"
+     })
+     document.querySelector("#foldericon").addEventListener("click",function(){
+      chaluband();
+      document.querySelector("#folderform").style.display="initial"
+     })
+     document.querySelector("#restarticon").addEventListener("click",function(){
+      chaluband();
+     })
+    
+     window.addEventListener("keydown",function(event){
+        console.log(event);
+        if(event.keyCode===27){
+          chaluband();
+          document.querySelectorAll("input").forEach(function(elem){
+            elem.value ="";
+          })
+        }
+     })
+    
+
+  </script>
+ </body>
+ </html>
